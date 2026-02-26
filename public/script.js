@@ -212,8 +212,16 @@ function renderSlide(slide) {
   const slideSubtextEl = document.getElementById('slide-subtext');
   const overlay = document.getElementById('overlay');
 
-  crossFadeBackground(slide.image, slide.backgroundPosition);
-  overlay.className = 'overlay ' + (slide.type || 'normal');
+  crossFadeBackground(slide.image, slide.backgroundPosition, slide.backgroundSize, slide.blur);
+
+  // Overlay: use inline gradient if slide defines one, else CSS class
+  if (slide.overlayGradient) {
+    overlay.className = 'overlay';
+    overlay.style.background = slide.overlayGradient;
+  } else {
+    overlay.style.background = '';
+    overlay.className = 'overlay ' + (slide.type || 'normal');
+  }
 
   slideTextEl.classList.remove('visible', 'hint-text');
   slideSubtextEl.classList.remove('visible');
@@ -296,7 +304,8 @@ function transitionToSlide(index) {
   currentIndex = index;
 
   if (slide.type === 'final') {
-    crossFadeBackground(slide.image, slide.backgroundPosition);
+    crossFadeBackground(slide.image, slide.backgroundPosition, slide.backgroundSize, slide.blur);
+    document.getElementById('overlay').style.background = '';
     document.getElementById('overlay').className = 'overlay final';
     updateScarfProgress(index);
     triggerFinalAnimation();
@@ -313,7 +322,7 @@ const goPrev = () => transitionToSlide(currentIndex - 1);
 // BACKGROUND CROSSFADE
 // Pure inline-style transitions — no CSS class conflicts.
 // ══════════════════════════════════════════════════════════
-function crossFadeBackground(imageSrc, bgPosition) {
+function crossFadeBackground(imageSrc, bgPosition, bgSize, blurAmount) {
   const bgA = document.getElementById('bg-layer-a');
   const bgB = document.getElementById('bg-layer-b');
 
@@ -326,6 +335,8 @@ function crossFadeBackground(imageSrc, bgPosition) {
   incoming.style.transition = 'none';
   incoming.style.backgroundImage = `url('${imageSrc}')`;
   incoming.style.backgroundPosition = bgPosition || 'center center';
+  incoming.style.backgroundSize = bgSize || 'cover';
+  incoming.style.filter = `blur(${blurAmount || '8px'})`;
   incoming.style.opacity = '0';
   incoming.style.transform = 'scale(1.04)';
   void incoming.offsetWidth;
@@ -342,6 +353,9 @@ function crossFadeBackground(imageSrc, bgPosition) {
   setTimeout(() => {
     outgoing.style.transition = 'none';
     outgoing.style.transform = 'scale(1.04)';
+    // Reset outgoing blur/size to defaults for next use
+    outgoing.style.filter = 'blur(8px)';
+    outgoing.style.backgroundSize = 'cover';
     isTransitioning = false;
 
     setTimeout(() => {

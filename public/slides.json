@@ -2,7 +2,7 @@
     {
         "id": 1,
         "image": "images/1.jpg",
-        "text": "I don\u0027t know when it happened… but\n you started feeling like home.",
+        "text": "I don\u0027t know when it happened… but\n you started feeling like home…",
         "type": "normal"
     },
     {
@@ -14,40 +14,90 @@
     {
         "id": 3,
         "image": "images/3.jpg",
-        "text": "Somewhere between the rain and the silence…\nI knew this was my favorite kind of forever.",
+        "text": "Somewhere between the rain and the silence…\nI knew this was my favorite kind of forever…",
         "type": "normal"
     },
     {
         "id": 4,
         "image": "images/4.jpg",
-        "text": "Right here with you…\neverything feels enough.",
+        "text": "Right here with you…\neverything feels enough…",
         "type": "normal"
     },
     {
         "id": 5,
         "image": "images/5.jpg",
-        "text": "Whatever comes next…\nI\u0027m choosing it with you.",
+        "text": "Whatever comes next…\nI\u0027m choosing it with you…",
         "type": "normal"
     },
     {
         "id": 6,
         "image": "images/6.webp",
-        "text": "You don’t even realize…\nhow much light you bring into my life.",
+        "text": "You don’t even realize…\nhow much light you bring into my life…",
         "type": "normal",
         "backgroundPosition": "center 35%"
     },
     {
         "id": 7,
         "image": "images/7.jpg",
-        "text": "You don't just shine…\nyou carry yourself with grace.",
+        "text": "You don\u0027t just shine…\nyou carry yourself with grace…",
         "type": "normal",
         "backgroundPosition": "center 30%"
     },
     {
         "id": 8,
         "image": "images/8.jpg",
-        "text": "Messy, colorful, glowing…\nand still the prettiest.",
+        "text": "Messy, colorful, glowing…\nand still the prettiest…",
         "type": "normal",
         "backgroundPosition": "center 45%"
+    },
+    {
+        "id": 9,
+        "image": "images/9.webp",
+        "text": "Your hand in mine…\nthat\u0027s my favorite feeling…",
+        "type": "normal",
+        "backgroundPosition": "center 90%"
+    },
+    {
+        "id": 10,
+        "image": "images/10.jpg",
+        "text": "As long as you\u0027re in my arms…\nI\u0027m home…",
+        "type": "normal",
+        "backgroundPosition": "center 25%"
+    },
+    {
+        "id": 11,
+        "image": "images/11.webp",
+        "text": "The way you walk through life…\nthat\u0027s what I admire most…",
+        "type": "normal",
+        "backgroundPosition": "center 30%",
+        "blur": "4px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.25), rgba(255,105,180,0.18))"
+    },
+    {
+        "id": 12,
+        "image": "images/12.jpg",
+        "text": "No matter where the road leads…\nI'll still choose you…",
+        "type": "normal",
+        "backgroundPosition": "center 40%",
+        "blur": "3px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.30), rgba(0,0,0,0.45))"
+    },
+    {
+        "id": 13,
+        "image": "images/13.jpg",
+        "text": "In every version of this world…\nI’d still find my way back to you…",
+        "type": "normal",
+        "backgroundPosition": "center 35%",
+        "blur": "3px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.42))"
+    },
+    {
+        "id": 14,
+        "image": "images/14.jpg",
+        "text": "Even if the whole world stands against us…\nI\u0027ll still stand with you…",
+        "type": "normal",
+        "backgroundPosition": "center 30%",
+        "blur": "3px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.65))"
     }
 ]
