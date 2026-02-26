@@ -213,7 +213,7 @@ function renderSlide(slide) {
   const slideSubtextEl = document.getElementById('slide-subtext');
   const overlay = document.getElementById('overlay');
 
-  crossFadeBackground(slide.image, slide.backgroundPosition, slide.backgroundSize, slide.blur);
+  crossFadeBackground(slide.image, slide.backgroundPosition, slide.backgroundSize, slide.blur, slide.zoomScale);
 
   // Overlay: use inline gradient if slide defines one, else CSS class
   if (slide.overlayGradient) {
@@ -349,7 +349,7 @@ function transitionToSlide(index) {
   currentIndex = index;
 
   if (slide.type === 'final') {
-    crossFadeBackground(slide.image, slide.backgroundPosition, slide.backgroundSize, slide.blur);
+    crossFadeBackground(slide.image, slide.backgroundPosition, slide.backgroundSize, slide.blur, slide.zoomScale);
     document.getElementById('overlay').style.background = '';
     document.getElementById('overlay').className = 'overlay final';
     updateScarfProgress(index);
@@ -367,7 +367,7 @@ const goPrev = () => transitionToSlide(currentIndex - 1);
 // BACKGROUND CROSSFADE
 // Pure inline-style transitions — no CSS class conflicts.
 // ══════════════════════════════════════════════════════════
-function crossFadeBackground(imageSrc, bgPosition, bgSize, blurAmount) {
+function crossFadeBackground(imageSrc, bgPosition, bgSize, blurAmount, zoomScale) {
   const bgA = document.getElementById('bg-layer-a');
   const bgB = document.getElementById('bg-layer-b');
 
@@ -404,9 +404,15 @@ function crossFadeBackground(imageSrc, bgPosition, bgSize, blurAmount) {
     isTransitioning = false;
 
     setTimeout(() => {
-      // For earlier landscape shots, zoom is 1.07. 
-      // For later portraits (index >= 6), keep it subtle at 1.03 to prevent tight cropping.
-      const finalScale = currentIndex >= 6 ? 'scale(1.03)' : 'scale(1.07)';
+      // Use explicit zoomScale if provided, otherwise fallback to defaults
+      let finalScale;
+      if (zoomScale) {
+        finalScale = `scale(${zoomScale})`;
+      } else {
+        // For earlier landscape shots, zoom is 1.07. 
+        // For later portraits (index >= 6), keep it subtle at 1.03 to prevent tight cropping.
+        finalScale = currentIndex >= 6 ? 'scale(1.03)' : 'scale(1.07)';
+      }
 
       incoming.style.transition = 'transform 12s ease-in-out';
       incoming.style.transform = finalScale;

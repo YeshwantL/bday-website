@@ -39,16 +39,18 @@
     {
         "id": 7,
         "image": "images/7.jpg",
-        "text": "You don\u0027t just shine…\nyou carry yourself with grace…",
+        "text": "You don't just shine…\nyou carry yourself with grace…",
         "type": "normal",
-        "backgroundPosition": "center 30%"
+        "backgroundPosition": "center 40%",
+        "zoomScale": 1.02
     },
     {
         "id": 8,
         "image": "images/8.jpg",
         "text": "Messy, colorful, glowing…\nand still the prettiest…",
         "type": "normal",
-        "backgroundPosition": "center 45%"
+        "backgroundPosition": "center 45%",
+        "zoomScale": 1.01
     },
     {
         "id": 9,
