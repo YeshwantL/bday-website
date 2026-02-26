@@ -80,7 +80,7 @@
         "image": "images/12.jpg",
         "text": "No matter where the road leads…\nI'll still choose you…",
         "type": "normal",
-        "backgroundPosition": "center 30%",
+        "backgroundPosition": "center 25%",
         "blur": "3px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.30), rgba(0,0,0,0.45))"
     },
@@ -125,7 +125,7 @@
         "image": "images/17.jpg",
         "text": "Not because I have to…\nnot because I'm afraid to lose you…\nbut because I choose you. Always.",
         "type": "normal",
-        "backgroundPosition": "center 55%",
+        "backgroundPosition": "center 45%",
         "blur": "2.5px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.30), rgba(120,60,90,0.25))"
     },
@@ -134,7 +134,7 @@
         "image": "images/18.jpg",
         "text": "I don’t say this enough…\nbut you’ve changed my life in ways you don’t even realize.\n\nYou walked in so gently,\nand somehow made everything feel lighter.\n\nOn my worst days, you are my calm.\nOn my best days, you are the reason they’re special.\n\nThank you…\nfor choosing me,\nfor believing in me,\nfor being in my life.",
         "type": "normal",
-        "backgroundPosition": "center 40%",
+        "backgroundPosition": "center 45%",
         "blur": "3px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.28), rgba(150,60,90,0.20))",
         "fontSize": "clamp(1.35rem, 1.7vw, 2rem)",
@@ -144,7 +144,7 @@
     {
         "id": 19,
         "image": "images/19.jpg",
-        "text": "Happy Birthday, My Love, My Mikasa.",
+        "text": "Happy Birthday Mikasa, My Love.",
         "type": "final",
         "backgroundPosition": "center 55%",
         "blur": "2px",
