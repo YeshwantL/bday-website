@@ -80,7 +80,7 @@
         "image": "images/12.jpg",
         "text": "No matter where the road leads…\nI'll still choose you…",
         "type": "normal",
-        "backgroundPosition": "center 40%",
+        "backgroundPosition": "center 30%",
         "blur": "3px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.30), rgba(0,0,0,0.45))"
     },
@@ -89,7 +89,7 @@
         "image": "images/13.jpg",
         "text": "In every version of this world…\nI’d still find my way back to you…",
         "type": "normal",
-        "backgroundPosition": "center 35%",
+        "backgroundPosition": "center 55%",
         "blur": "3px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.28), rgba(0,0,0,0.42))"
     },
@@ -98,7 +98,7 @@
         "image": "images/14.jpg",
         "text": "Even if the whole world stands against us…\nI\u0027ll still stand with you…",
         "type": "normal",
-        "backgroundPosition": "center 30%",
+        "backgroundPosition": "center 45%",
         "blur": "3px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.65))"
     },
@@ -107,7 +107,7 @@
         "image": "images/15.jpg",
         "text": "The world can change. People can change.\nBut my choice… will always be you.",
         "type": "normal",
-        "backgroundPosition": "center 40%",
+        "backgroundPosition": "center 65%",
         "blur": "3px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.35), rgba(20,20,40,0.35))"
     },
@@ -125,7 +125,7 @@
         "image": "images/17.jpg",
         "text": "Not because I have to…\nnot because I'm afraid to lose you…\nbut because I choose you. Always.",
         "type": "normal",
-        "backgroundPosition": "center 35%",
+        "backgroundPosition": "center 55%",
         "blur": "2.5px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.30), rgba(120,60,90,0.25))"
     },
