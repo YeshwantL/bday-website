@@ -238,7 +238,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transform: scale(1.04);
   filter: blur(8px);
   z-index: 0;
   /* Note: transition is applied dynamically by script.js */
