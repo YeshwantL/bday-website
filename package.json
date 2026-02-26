@@ -1,0 +1,9 @@
+{
+    "name": "birthday-slideshow",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "build": "echo \"Ready for Vercel static deployment!\"",
+        "start": "npx serve ."
+    }
+}
