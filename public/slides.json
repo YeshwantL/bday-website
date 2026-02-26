@@ -31,9 +31,23 @@
     },
     {
         "id": 6,
-        "image": "pics/6.jpg",
+        "image": "images/6.webp",
         "text": "You don’t even realize…\nhow much light you bring into my life.",
         "type": "normal",
         "backgroundPosition": "center 35%"
+    },
+    {
+        "id": 7,
+        "image": "images/7.jpg",
+        "text": "You don't just shine…\nyou carry yourself with grace.",
+        "type": "normal",
+        "backgroundPosition": "center 30%"
+    },
+    {
+        "id": 8,
+        "image": "images/8.jpg",
+        "text": "Messy, colorful, glowing…\nand still the prettiest.",
+        "type": "normal",
+        "backgroundPosition": "center 45%"
     }
 ]
