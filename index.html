@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday 🧣</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       INTRO SCREEN
+  ════════════════════════════════════════════ -->
+  <div id="introScreen">
+
+    <!-- Background floating hearts canvas -->
+    <canvas id="intro-hearts"></canvas>
+
+    <!-- Center content -->
+    <div id="intro-content">
+      <h1 id="intro-heading">Hey Birthday Girl 💖</h1>
+      <p  id="intro-subtext">I made something just for you…</p>
+      <button id="intro-btn">
+        <span id="btn-ripple"></span>
+        Click to Begin
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       SLIDESHOW CONTAINER
+  ════════════════════════════════════════════ -->
+  <div id="slideshowContainer" class="hidden-slide">
+
+    <!-- Scarf progress bar -->
+    <div id="scarf-container">
+      <svg id="scarf-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 22" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="scarfGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#8B0000;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#B11226;stop-opacity:1" />
+          </linearGradient>
+          <clipPath id="scarf-clip">
+            <rect id="scarf-fill-rect" x="0" y="0" width="0" height="22" />
+          </clipPath>
+        </defs>
+        <path id="scarf-track"
+          d="M0,14 C60,6 120,20 180,12 C240,4 300,18 360,10 C420,2 480,16 540,8 C600,0 660,16 720,10 C780,4 840,18 900,10 C960,2 1020,16 1080,8 C1140,0 1200,16 1260,10 C1320,4 1380,18 1440,14 L1440,22 L0,22 Z"
+          fill="rgba(139,0,0,0.2)"
+        />
+        <path id="scarf-fill"
+          d="M0,14 C60,6 120,20 180,12 C240,4 300,18 360,10 C420,2 480,16 540,8 C600,0 660,16 720,10 C780,4 840,18 900,10 C960,2 1020,16 1080,8 C1140,0 1200,16 1260,10 C1320,4 1380,18 1440,14 L1440,22 L0,22 Z"
+          fill="url(#scarfGrad)"
+          clip-path="url(#scarf-clip)"
+        />
+      </svg>
+    </div>
+
+    <!-- Background layers -->
+    <div id="bg-layer-a" class="bg-layer"></div>
+    <div id="bg-layer-b" class="bg-layer"></div>
+
+    <!-- Overlay -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Slide text -->
+    <div id="slide-text-container">
+      <p id="slide-text"    class="slide-text"></p>
+      <p id="slide-subtext" class="slide-subtext"></p>
+    </div>
+
+    <!-- Final reveal -->
+    <div id="final-reveal" class="hidden">
+      <h1 id="final-heading"></h1>
+    </div>
+
+    <!-- Confetti + hearts canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Invisible nav zones -->
+    <div id="zone-left"  class="nav-zone"></div>
+    <div id="zone-right" class="nav-zone"></div>
+
+  </div><!-- /slideshowContainer -->
+
+  <!-- Hidden audio -->
+  <audio id="bg-music" loop>
+    <source src="public/music/theme.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
