@@ -182,8 +182,9 @@ function resetFinalState() {
   const music = document.getElementById('bg-music');
 
   document.body.classList.remove('final-mode');
-  scarfContainer.classList.remove('floating', 'detached');
+  scarfContainer.classList.remove('center-pop', 'glow', 'fade-out');
   scarfContainer.style.cssText = '';
+  document.getElementById('slide-text-container').style.display = 'flex';
 
   particlesRunning = false;
   if (animFrameId !== null) { cancelAnimationFrame(animFrameId); animFrameId = null; }
@@ -240,8 +241,8 @@ function renderSlide(slide) {
 
   textRevealTimer = setTimeout(() => {
     textRevealTimer = null;
-    slideTextEl.style.fontSize   = slide.fontSize   || '';
-    slideTextEl.style.lineHeight = slide.lineHeight  || '';
+    slideTextEl.style.fontSize = slide.fontSize || '';
+    slideTextEl.style.lineHeight = slide.lineHeight || '';
     slideTextEl.textContent = slide.text;
     if (slide.type === 'hint') slideTextEl.classList.add('hint-text');
     void slideTextEl.offsetWidth;
@@ -268,20 +269,30 @@ function updateScarfProgress(index) {
 // ══════════════════════════════════════════════════════════
 // FINAL ANIMATION
 // ══════════════════════════════════════════════════════════
-function triggerFinalAnimation() {
+function triggerFinalAnimation(slide) {
   if (isFinalAnimating) return;
   isFinalAnimating = true;
   finalTriggered = true;
 
   const scarfContainer = document.getElementById('scarf-container');
-  const scarfFillRect  = document.getElementById('scarf-fill-rect');
-  const finalReveal    = document.getElementById('final-reveal');
-  const slideTextEl    = document.getElementById('slide-text');
+  const scarfFillRect = document.getElementById('scarf-fill-rect');
+  const finalReveal = document.getElementById('final-reveal');
+  const slideTextContainer = document.getElementById('slide-text-container');
+  const slideTextEl = document.getElementById('slide-text');
   const slideSubtextEl = document.getElementById('slide-subtext');
-  const music          = document.getElementById('bg-music');
+  const finalHeading = document.getElementById('final-heading');
+  const music = document.getElementById('bg-music');
 
-  // Clear ordinary text so we can transition cleanly to the final overlay text
+  // Fully unmount old text visually so no stacking is possible
+  clearTimeout(textRevealTimer);
+  slideTextContainer.style.display = 'none';
+  slideTextEl.textContent = '';
   slideSubtextEl.textContent = '';
+  slideTextEl.classList.remove('visible', 'hint-text');
+  slideSubtextEl.classList.remove('visible');
+
+  // Set the isolated final slide text
+  finalHeading.textContent = slide.text;
 
   if (musicStarted) fadeVolume(music, 0.5, 1200);
 
@@ -297,21 +308,25 @@ function triggerFinalAnimation() {
     // 3. Glow effect (starts slightly after pop begins)
     setTimeout(() => {
       scarfContainer.classList.add('glow');
-      
+
       // Part of climax: trigger particles and end text
-      finalReveal.classList.remove('hidden');
-      void finalReveal.offsetWidth;
-      finalReveal.classList.add('show');
-      startParticles();
-      
-      // 4. Fade out
       setTimeout(() => {
         scarfContainer.classList.add('fade-out');
-        
+
         // Cleanup after fade (hide from DOM)
         setTimeout(() => {
           scarfContainer.style.display = 'none';
-          isFinalAnimating = false;
+
+          startParticles();
+
+          // Delay text animation by 600ms to prevent overlap
+          setTimeout(() => {
+            finalReveal.classList.remove('hidden');
+            void finalReveal.offsetWidth;
+            finalReveal.classList.add('show');
+            isFinalAnimating = false;
+          }, 600);
+
         }, 1000);
       }, 1000); // hold glow for 1s
     }, 600); // wait for 600ms pop transition
@@ -338,7 +353,7 @@ function transitionToSlide(index) {
     document.getElementById('overlay').style.background = '';
     document.getElementById('overlay').className = 'overlay final';
     updateScarfProgress(index);
-    triggerFinalAnimation();
+    triggerFinalAnimation(slide);
   } else {
     renderSlide(slide);
     updateScarfProgress(index);
