@@ -1,0 +1,39 @@
+﻿[
+    {
+        "id": 1,
+        "image": "images/1.jpg",
+        "text": "I don\u0027t know when it happened… but\n you started feeling like home.",
+        "type": "normal"
+    },
+    {
+        "id": 2,
+        "image": "images/2.jpg",
+        "text": "I guess I didn\u0027t stand a chance, did I?",
+        "type": "normal"
+    },
+    {
+        "id": 3,
+        "image": "images/3.jpg",
+        "text": "Somewhere between the rain and the silence…\nI knew this was my favorite kind of forever.",
+        "type": "normal"
+    },
+    {
+        "id": 4,
+        "image": "images/4.jpg",
+        "text": "Right here with you…\neverything feels enough.",
+        "type": "normal"
+    },
+    {
+        "id": 5,
+        "image": "images/5.jpg",
+        "text": "Whatever comes next…\nI\u0027m choosing it with you.",
+        "type": "normal"
+    },
+    {
+        "id": 6,
+        "image": "pics/6.jpg",
+        "text": "You don’t even realize…\nhow much light you bring into my life.",
+        "type": "normal",
+        "backgroundPosition": "center 35%"
+    }
+]
