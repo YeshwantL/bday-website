@@ -404,8 +404,12 @@ function crossFadeBackground(imageSrc, bgPosition, bgSize, blurAmount) {
     isTransitioning = false;
 
     setTimeout(() => {
+      // For earlier landscape shots, zoom is 1.07. 
+      // For later portraits (index >= 6), keep it subtle at 1.03 to prevent tight cropping.
+      const finalScale = currentIndex >= 6 ? 'scale(1.03)' : 'scale(1.07)';
+
       incoming.style.transition = 'transform 12s ease-in-out';
-      incoming.style.transform = 'scale(1.07)';
+      incoming.style.transform = finalScale;
     }, 30);
   }, 820);
 }
