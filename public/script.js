@@ -377,45 +377,46 @@ function crossFadeBackground(imageSrc, bgPosition, bgSize, blurAmount, zoomScale
 
   isTransitioning = true;
 
+  // Determine target scale for the long 12s animation
+  let targetScale;
+  if (zoomScale) {
+    targetScale = `scale(${zoomScale})`;
+  } else {
+    // For earlier landscape shots, zoom is 1.07. 
+    // For later portraits (index >= 6), keep it subtle at 1.03
+    targetScale = currentIndex >= 6 ? 'scale(1.03)' : 'scale(1.07)';
+  }
+
+  // Set up incoming image initial state (scale 1.0)
   incoming.style.transition = 'none';
   incoming.style.backgroundImage = `url('${imageSrc}')`;
   incoming.style.backgroundPosition = bgPosition || 'center center';
   incoming.style.backgroundSize = bgSize || 'cover';
   incoming.style.filter = `blur(${blurAmount || '8px'})`;
   incoming.style.opacity = '0';
-  incoming.style.transform = 'scale(1.04)';
-  void incoming.offsetWidth;
-
-  const T = '0.8s ease-in-out';
-  incoming.style.transition = `opacity ${T}, transform ${T}`;
-  outgoing.style.transition = `opacity ${T}, transform ${T}`;
-
-  incoming.style.opacity = '1';
   incoming.style.transform = 'scale(1)';
+  void incoming.offsetWidth; // Force reflow
+
+  // Crossfade opacity (0 -> 1 over 0.8s) while keeping scale(1)
+  const T = '0.8s ease-in-out';
+  incoming.style.transition = `opacity ${T}`;
+  outgoing.style.transition = `opacity ${T}`;
+  
+  incoming.style.opacity = '1';
   outgoing.style.opacity = '0';
-  outgoing.style.transform = 'scale(1.02)';
 
   setTimeout(() => {
+    // Reset outgoing layer
     outgoing.style.transition = 'none';
-    outgoing.style.transform = 'scale(1.04)';
-    // Reset outgoing blur/size to defaults for next use
+    outgoing.style.transform = 'scale(1)';
     outgoing.style.filter = 'blur(8px)';
     outgoing.style.backgroundSize = 'cover';
     isTransitioning = false;
 
+    // Start the slow cinematic zoom immediately after crossfade completes
     setTimeout(() => {
-      // Use explicit zoomScale if provided, otherwise fallback to defaults
-      let finalScale;
-      if (zoomScale) {
-        finalScale = `scale(${zoomScale})`;
-      } else {
-        // For earlier landscape shots, zoom is 1.07. 
-        // For later portraits (index >= 6), keep it subtle at 1.03 to prevent tight cropping.
-        finalScale = currentIndex >= 6 ? 'scale(1.03)' : 'scale(1.07)';
-      }
-
       incoming.style.transition = 'transform 12s ease-in-out';
-      incoming.style.transform = finalScale;
+      incoming.style.transform = targetScale;
     }, 30);
   }, 820);
 }
