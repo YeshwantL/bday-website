@@ -67,7 +67,7 @@
     {
         "id": 11,
         "image": "images/11.webp",
-        "text": "The way you walk through life…\nthat\u0027s what I admire most…",
+        "text": "The way you walk through life…\nthat's what I admire most.",
         "type": "normal",
         "backgroundPosition": "center 30%",
         "blur": "4px",
@@ -99,5 +99,53 @@
         "backgroundPosition": "center 30%",
         "blur": "3px",
         "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.45), rgba(0,0,0,0.65))"
+    },
+    {
+        "id": 15,
+        "image": "images/15.jpg",
+        "text": "The world can change. People can change.\nBut my choice… will always be you.",
+        "type": "normal",
+        "backgroundPosition": "center 40%",
+        "blur": "3px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.35), rgba(20,20,40,0.35))"
+    },
+    {
+        "id": 16,
+        "image": "images/16.jpg",
+        "text": "Even in the coldest nights…\nyou are my warmest certainty.",
+        "type": "normal",
+        "backgroundPosition": "center 35%",
+        "blur": "3px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.45), rgba(15,20,35,0.45))"
+    },
+    {
+        "id": 17,
+        "image": "images/17.jpg",
+        "text": "Not because I have to…\nnot because I'm afraid to lose you…\nbut because I choose you. Always.",
+        "type": "normal",
+        "backgroundPosition": "center 35%",
+        "blur": "2.5px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.30), rgba(120,60,90,0.25))"
+    },
+    {
+        "id": 18,
+        "image": "images/18.jpg",
+        "text": "I don’t say this enough…\nbut you’ve changed my life in ways you don’t even realize.\n\nYou walked in so gently,\nand somehow made everything feel lighter.\n\nOn my worst days, you are my calm.\nOn my best days, you are the reason they’re special.\n\nThank you…\nfor choosing me,\nfor believing in me,\nfor being in my life.",
+        "type": "normal",
+        "backgroundPosition": "center 40%",
+        "blur": "3px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.28), rgba(150,60,90,0.20))",
+        "fontSize": "clamp(1.35rem, 1.7vw, 2rem)",
+        "lineHeight": "1.7",
+        "textLayout": "top"
+    },
+    {
+        "id": 19,
+        "image": "images/19.jpg",
+        "text": "Happy Birthday, My Love.",
+        "type": "final",
+        "backgroundPosition": "center 35%",
+        "blur": "2px",
+        "overlayGradient": "linear-gradient(180deg, rgba(0,0,0,0.25), rgba(150,40,60,0.25))"
     }
 ]

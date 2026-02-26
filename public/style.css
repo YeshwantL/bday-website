@@ -284,6 +284,14 @@ body {
   pointer-events: none;
 }
 
+#slide-text-container.layout-top {
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 8vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
 .slide-text {
   color: #fff;
   font-size: clamp(2rem, 2.6vw, 3.2rem);
@@ -368,35 +376,27 @@ body {
 /* ============================================================
    SCARF FLOAT ANIMATION
    ============================================================ */
-#scarf-container.floating {
-  animation: scarfFloat 3s ease-in-out forwards;
+/* 1. Pop to center */
+#scarf-container.center-pop {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: top 600ms ease-out, left 600ms ease-out, transform 600ms ease-out;
   z-index: 30;
 }
 
-@keyframes scarfFloat {
-  0% {
-    top: 0;
-    transform: scale(1) rotate(0deg);
-  }
+/* 2. Soft glow */
+#scarf-container.glow {
+  box-shadow: 0 0 30px rgba(255, 60, 80, 0.6), 0 0 60px rgba(255, 60, 80, 0.4);
+  border-radius: 4px; /* to make the box-shadow look smooth on a thin line */
+  transition: box-shadow 500ms ease-in-out;
+}
 
-  30% {
-    transform: scale(1.08) rotate(4deg);
-  }
-
-  60% {
-    top: 36%;
-    transform: scale(1.2) rotate(12deg);
-  }
-
-  80% {
-    top: 40%;
-    transform: scale(1.22) rotate(-6deg);
-  }
-
-  100% {
-    top: 42%;
-    transform: scale(1.2) rotate(8deg);
-  }
+/* 3. Fade out */
+#scarf-container.fade-out {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 1000ms ease-in-out, transform 1000ms ease-in-out;
 }
 
 /* ============================================================

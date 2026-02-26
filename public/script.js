@@ -223,6 +223,14 @@ function renderSlide(slide) {
     overlay.className = 'overlay ' + (slide.type || 'normal');
   }
 
+  // Per-slide text layout
+  const textContainer = document.getElementById('slide-text-container');
+  if (slide.textLayout === 'top') {
+    textContainer.classList.add('layout-top');
+  } else {
+    textContainer.classList.remove('layout-top');
+  }
+
   slideTextEl.classList.remove('visible', 'hint-text');
   slideSubtextEl.classList.remove('visible');
   slideTextEl.textContent = '';
@@ -232,6 +240,8 @@ function renderSlide(slide) {
 
   textRevealTimer = setTimeout(() => {
     textRevealTimer = null;
+    slideTextEl.style.fontSize   = slide.fontSize   || '';
+    slideTextEl.style.lineHeight = slide.lineHeight  || '';
     slideTextEl.textContent = slide.text;
     if (slide.type === 'hint') slideTextEl.classList.add('hint-text');
     void slideTextEl.offsetWidth;
@@ -264,28 +274,48 @@ function triggerFinalAnimation() {
   finalTriggered = true;
 
   const scarfContainer = document.getElementById('scarf-container');
-  const scarfFillRect = document.getElementById('scarf-fill-rect');
-  const finalReveal = document.getElementById('final-reveal');
-  const slideTextEl = document.getElementById('slide-text');
+  const scarfFillRect  = document.getElementById('scarf-fill-rect');
+  const finalReveal    = document.getElementById('final-reveal');
+  const slideTextEl    = document.getElementById('slide-text');
   const slideSubtextEl = document.getElementById('slide-subtext');
-  const music = document.getElementById('bg-music');
+  const music          = document.getElementById('bg-music');
 
-  slideTextEl.textContent = '';
+  // Clear ordinary text so we can transition cleanly to the final overlay text
   slideSubtextEl.textContent = '';
-  scarfFillRect.setAttribute('width', 1440);
 
   if (musicStarted) fadeVolume(music, 0.5, 1200);
 
+  // 1. Fill completion (800ms)
+  scarfFillRect.style.transition = 'width 800ms ease-in-out';
+  scarfFillRect.setAttribute('width', 1440);
+
+  // Wait for fill to finish
   setTimeout(() => {
-    scarfContainer.classList.add('floating');
+    // 2. Pop to center
+    scarfContainer.classList.add('center-pop');
+
+    // 3. Glow effect (starts slightly after pop begins)
     setTimeout(() => {
+      scarfContainer.classList.add('glow');
+      
+      // Part of climax: trigger particles and end text
       finalReveal.classList.remove('hidden');
       void finalReveal.offsetWidth;
       finalReveal.classList.add('show');
       startParticles();
-      isFinalAnimating = false;
-    }, 3200);
-  }, 1000);
+      
+      // 4. Fade out
+      setTimeout(() => {
+        scarfContainer.classList.add('fade-out');
+        
+        // Cleanup after fade (hide from DOM)
+        setTimeout(() => {
+          scarfContainer.style.display = 'none';
+          isFinalAnimating = false;
+        }, 1000);
+      }, 1000); // hold glow for 1s
+    }, 600); // wait for 600ms pop transition
+  }, 800); // wait for 800ms fill
 }
 
 // ══════════════════════════════════════════════════════════
